@@ -1,13 +1,21 @@
 # vim: ft=sh
 layout_conda() {
-	source ~/.env.d/conda.plugin.zsh
+	if (($# > 1)) && [[ $2 == "micromamba" ]]; then
+		export MAMBA_ROOT_PREFIX=~/micromamba/
+		eval "$(~/.local/bin/micromamba shell hook -s zsh)"
+		local conda_cmd=micromamba
+	else
+		eval "$(~/miniconda3/bin/conda shell.zsh hook)"
+		local conda_cmd=conda
+	fi
+
 	if [ -n "$1" ]; then
 		# Explicit environment name from layout command.
 		local env_name="$1"
-		conda activate ${env_name}
+		$conda_cmd activate ${env_name}
 	elif (grep -q name: environment.yml); then
 		# Detect environment name from `environment.yml` file in `.envrc` directory
-		conda activate $(grep name: environment.yml | sed -e 's/name: //' | cut -d "'" -f 2 | cut -d '"' -f 2)
+		$conda_cmd activate $(grep name: environment.yml | sed -e 's/name: //' | cut -d "'" -f 2 | cut -d '"' -f 2)
 	else
 		(echo >&2 No environment specified)
 		exit 1
