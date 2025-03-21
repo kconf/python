@@ -2,3 +2,9 @@
 [[sources]]
 name = "TUNA"
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[behavior]
+global-python = true
+
+[default]
+toolchain = "cpython@3.12"
