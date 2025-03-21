@@ -1,0 +1,4 @@
+# An array of tables with optional sources.  Same format as in pyproject.toml
+[[sources]]
+name = "TUNA"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
