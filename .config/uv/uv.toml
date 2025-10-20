@@ -1,7 +1,7 @@
 python-install-mirror = "https://registry.npmmirror.com/-/binary/python-build-standalone"
 
 [[index]]
-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+url = "https://mirrors.aliyun.com/pypi/simple/"
 default = true
 
 
